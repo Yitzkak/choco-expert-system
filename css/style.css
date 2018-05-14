@@ -1,0 +1,27 @@
+body, html {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+.bg { 
+    background-image: url("../images/bg.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+.centered {
+    border: 100px solid rgb(0, 0, 255,0.36);;
+    background-color: rgb(142, 68, 173,1);
+    background-clip: padding-box;
+    padding: 30px;
+    color: aliceblue;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
