@@ -1,7 +1,27 @@
+<?php
+	session_start();
+	require_once('../conn.php');
+	if(isset($_POST['uname']) && isset($_POST['pass'])){
+		$uname = $_POST['uname'];
+		$pass = $_POST['pass'];
+		if(!empty($uname) && !empty($pass)){
+			$sql = "SELECT * FROM users WHERE username = ? AND pword = ?";
+			$stmt = $pdo->prepare($sql);
+			$stmt->execute([$uname,$pass]);
+			$user = $stmt->fetchAll();
+			if($user == true){
+				$_SESSION["uname"] = $uname;
+				header("location:../dashboard.php");
+			}
+			//var_dump($user);	
+		}
+  	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V2</title>
+	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -32,7 +52,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form method="post" action = "login.php" class="login100-form validate-form" >
 					<span class="login100-form-title p-b-26">
 						Welcome
 					</span>
@@ -40,9 +60,9 @@
 						<i class="zmdi zmdi-font"></i>
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-						<input class="input100" type="text" name="email">
-						<span class="focus-input100" data-placeholder="Email"></span>
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" name="uname">
+						<span class="focus-input100" data-placeholder="username"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
@@ -56,9 +76,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								Login
-							</button>
+							<input type="submit" value="login" name="submit" class="login100-form-btn">		
 						</div>
 					</div>
 
@@ -67,7 +85,7 @@
 							Don’t have an account?
 						</span>
 
-						<a class="txt2" href="#">
+						<a class="txt2" href="../register/register.php">
 							Sign Up
 						</a>
 					</div>

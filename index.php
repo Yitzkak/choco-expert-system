@@ -1,3 +1,10 @@
+<?php
+    require 'conn.php';
+
+    echo "working";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +24,10 @@
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login/login.html">Login</a>
+                    <a class="nav-link" href="login/login.php">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register/register.html">Register</a>
+                    <a class="nav-link" href="register/register.php">Register</a>
                 </li>
             </ul>
         </nav>
